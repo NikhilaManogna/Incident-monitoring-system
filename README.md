@@ -1,7 +1,6 @@
 # Incident Monitoring and Failure Prediction System
 
-A real-time incident monitoring and failure prediction platform built using Spring Boot, Apache Kafka, and PostgreSQL.  
-The platform ingests high-frequency system metrics, processes them through distributed Kafka pipelines, performs risk analysis and anomaly detection, and exposes secure APIs for operational control and auditing.
+A real-time incident monitoring and failure prediction platform built using Spring Boot, Apache Kafka, and PostgreSQL. The platform ingests high-frequency system metrics, processes them through distributed Kafka pipelines, performs risk analysis and anomaly detection, and exposes secure APIs for operational control and auditing.
 
 It reflects real-world monitoring and observability systems used in large-scale microservices architectures, emphasizing scalability, reliability, and secure access control.
 
@@ -23,18 +22,20 @@ It reflects real-world monitoring and observability systems used in large-scale 
 ---
 ## Tech Stack
 
-| Layer            | Technology               |
-|------------------|--------------------------|
-| Language         | Java                     |
-| Framework        | Spring Boot              |
-| Messaging Queue  | Apache Kafka             |
-| Database         | PostgreSQL               |
-| ORM              | Hibernate / JPA          |
-| Security         | Spring Security, JWT     |
-| API Docs         | Swagger / OpenAPI        |
-| Containerization | Docker                   |
-| Build Tool       | Maven                    |
-| Testing Tool     | Postman                  |
+| Layer / Concern       | Technology                | Purpose |
+|----------------------|---------------------------|---------|
+| Programming Language | Java                      | Backend logic |
+| Framework            | Spring Boot               | API & microservices |
+| Messaging            | Apache Kafka              | Distributed event stream |
+| Persistence          | PostgreSQL                | Persistent storage |
+| ORM                  | Hibernate (JPA)           | Data mapping |
+| Security             | Spring Security + JWT     | Authentication & authorization |
+| API Docs             | Swagger / OpenAPI         | Documentation |
+| Containerization     | Docker + Docker Compose   | Infrastructure setup |
+| Testing             | Postman                   | API testing |
+| Logging             | SLF4J / Logback           | Runtime logs |
+
+
 ---
 
 ## System Architecture
@@ -135,7 +136,6 @@ src/main/java/com/failureprediction
 
 ### Auth
 - `POST /auth/login`
-- `POST /auth/register`
 
 ### Metrics
 - `POST /metrics`
@@ -150,6 +150,28 @@ src/main/java/com/failureprediction
 - `GET /analytics/trends`
 
 ---
+
+## Example API Usage
+
+### Login
+
+```bash
+curl -X POST http://localhost:8080/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"username":"admin","password":"admin123"}'
+```
+### Response
+```bash
+{
+  "token": "eyJhbGciOiJIUzI1NiJ9..."
+}
+```
+### Resolve Incident (Admin Only)
+```bash
+curl -X PUT "http://localhost:8080/api/failures/3/resolve?resolvedBy=admin&comment=fixed" \
+  -H "Authorization: Bearer <TOKEN>"
+```
+
 ## Setup Instructions
 
 ### Prerequisites
@@ -211,3 +233,7 @@ http://localhost:8080/swagger-ui.html
 - Kubernetes deployment
 
 ---
+
+## Contributing
+
+Contributions are welcome.
