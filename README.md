@@ -41,7 +41,7 @@ It reflects real-world monitoring and observability systems used in large-scale 
 ## System Architecture
 ```
 
-Client / Monitoring Agent --> REST API (Spring Boot) --> Kafka Producer (Metrics Ingestion) --> Apache Kafka Topics --> Kafka Consumer --> Failure Analysis Engine --> PostgreSQL Database --> Secure REST APIs --> Admin / User Dashboard (Postman / UI)
+Client/Monitoring Agent -> REST API (Spring Boot) -> Kafka Producer(Metrics Ingestion) -> Apache Kafka Topics -> Kafka Consumer -> Failure Analysis Engine -> PostgreSQL Database -> Secure REST APIs -> Admin/User Dashboard(Postman / UI)
 
 ```
 
